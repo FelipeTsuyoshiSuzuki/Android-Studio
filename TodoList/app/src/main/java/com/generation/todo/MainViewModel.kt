@@ -10,6 +10,7 @@ import com.generation.todo.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,6 +18,8 @@ class MainViewModel @Inject constructor (
     val repository: Repository
 ): ViewModel() {
 
+
+    // Categoria
     private var _categoriaResponse = MutableLiveData<Response<List<Categoria>>>()
 
     val categoriaResponse: LiveData<Response<List<Categoria>>> = _categoriaResponse
@@ -32,6 +35,15 @@ class MainViewModel @Inject constructor (
             }
 
         }
+    }
+
+    // Data
+    var dataSelecionada = MutableLiveData<LocalDate>()
+
+    init {
+        dataSelecionada.value = LocalDate.now()
+
+        listCategoria()
     }
 
 }
