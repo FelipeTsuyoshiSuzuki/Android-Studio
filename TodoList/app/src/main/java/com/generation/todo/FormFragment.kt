@@ -16,7 +16,7 @@ import com.generation.todo.repository.Repository
 class FormFragment : Fragment() {
 
     private lateinit var binding: FragmentFormBinding
-    val mainViewModel: MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

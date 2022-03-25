@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor (
                 val response = repository.listCategoria()
                 _categoriaResponse.value = response
             }catch (e: Exception) {
-                Log.d("ERRO", e.message.toString())
+                Log.d("ERRO REQUISIÇÃO ", e.message.toString())
             }
 
         }
