@@ -13,14 +13,14 @@ import com.example.sqlcomroom.databinding.FragmentListBinding
 class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
-    private lateinit var viewModel: UserViewModel
+    private lateinit var mainViewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        viewModel = UserViewModel(context)
+        mainViewModel = UserViewModel(context)
 
         binding = FragmentListBinding.inflate(
             layoutInflater, container, false
@@ -35,6 +35,10 @@ class ListFragment : Fragment() {
         binding.recyclerUser.layoutManager = LinearLayoutManager(context)
         binding.recyclerUser.adapter = adapter
         binding.recyclerUser.setHasFixedSize(true)
+
+        mainViewModel.lerDados.observe(viewLifecycleOwner) {
+            response -> adapter.setList(response)
+        }
 
 
         return binding.root
